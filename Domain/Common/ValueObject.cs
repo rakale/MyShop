@@ -1,5 +1,5 @@
-﻿using System;
-using Abc.Aids.Methods;
+﻿using Abc.Aids.Methods;
+using System;
 
 namespace Abc.Domain.Common {
 
@@ -41,8 +41,8 @@ namespace Abc.Domain.Common {
                     case null:
                         return false;
                 }
-                if (name == "Id" 
-                    && isGuid(expected as string) 
+                if (name == "Id"
+                    && isGuid(expected as string)
                     && isGuid(actual as string)) continue;
 
                 if (!expected.Equals(actual)) return false;
@@ -50,13 +50,12 @@ namespace Abc.Domain.Common {
 
             return true;
         }
-        
+
         private static bool isGuid(string s) {
             try {
                 guid = new Guid(s);
                 return true;
-            }
-            catch (FormatException) { return false; }
+            } catch (FormatException) { return false; }
         }
 
     }

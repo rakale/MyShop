@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Abc.Aids.Methods;
+﻿using Abc.Aids.Methods;
+using System.Collections.Generic;
 
 namespace Abc.Domain.Common {
 
@@ -9,9 +9,9 @@ namespace Abc.Domain.Common {
         internal TRepository repository
             => GetRepository.Instance<TRepository>();
 
-        public TObject ById(string id) 
+        public TObject ById(string id)
             => Safe.Run(() => repository.Get(id).GetAwaiter().GetResult(), default(TObject));
-        
+
         public IReadOnlyList<TObject> ListBy(string field, string value) {
             var r = repository;
 

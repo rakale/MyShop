@@ -6,8 +6,8 @@ namespace Abc.Domain.Common {
 
         protected internal NamedEntity(T d = null) : base(d) { }
 
-        public virtual string Name => Data?.Name?? Unspecified;
-        public virtual string Code => Data?.Code?? Unspecified;
+        public virtual string Name => Data?.Name ?? Unspecified;
+        public virtual string Code => Data?.Code ?? Unspecified;
 
     }
 

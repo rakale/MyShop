@@ -6,7 +6,7 @@ namespace Abc.Domain.Common {
 
         protected internal UniqueEntity(T d = null) : base(d) { }
 
-        public virtual string Id => Data?.Id?? Unspecified;
+        public virtual string Id => Data?.Id ?? Unspecified;
 
     }
 

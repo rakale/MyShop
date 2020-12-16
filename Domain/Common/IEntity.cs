@@ -8,8 +8,7 @@ namespace Abc.Domain.Common {
 
         bool IsUnspecified { get; }
     }
-    public interface IEntity<out TData> : IEntity
-    {
+    public interface IEntity<out TData> : IEntity {
         TData Data { get; }
     }
 }

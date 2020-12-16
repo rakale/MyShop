@@ -6,7 +6,7 @@ namespace Abc.Domain.Common {
 
         protected internal DefinedEntity(T d = null) : base(d) { }
 
-        public virtual string Definition => Data?.Definition?? Unspecified;
+        public virtual string Definition => Data?.Definition ?? Unspecified;
 
     }
 
