@@ -1,0 +1,10 @@
+﻿@page
+@model Pages.ProductsPage
+@using Soft.Extensions
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Index";
+    ViewData["Title"] = Model.Caption;
+}
+
+@Html.ShowTable(Model)

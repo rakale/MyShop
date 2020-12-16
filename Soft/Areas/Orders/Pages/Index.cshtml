@@ -1,0 +1,11 @@
+﻿@page
+@model Pages.OrdersPage
+@using Soft.Extensions
+@using System.Linq.Expressions;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Index";
+    ViewData["Title"] = Model.Caption;
+}
+
+@Html.ShowTable(Model)
