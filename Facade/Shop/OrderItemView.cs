@@ -1,7 +1,7 @@
-﻿using Abc.Data.Common;
+﻿using Abc.Facade.Common;
 
-namespace Abc.Data.Shop {
-    public sealed class OrderItemData : UniqueEntityData {
+namespace Abc.Facade.Shop {
+    public class OrderItemView : UniqueEntityView {
         public string CatalogItemId { get; set; }
         public string ProductName { get; set; }
         public string PictureUri { get; set; }

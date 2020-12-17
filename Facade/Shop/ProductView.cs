@@ -1,7 +1,7 @@
-﻿using Abc.Data.Common;
+﻿using Abc.Facade.Common;
 
-namespace Abc.Data.Shop {
-    public sealed class ProductData : NamedEntityData {
+namespace Abc.Facade.Shop {
+    public class ProductView : NamedView {
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string PictureUri { get; set; }

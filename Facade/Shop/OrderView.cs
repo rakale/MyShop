@@ -1,8 +1,8 @@
-﻿using Abc.Data.Common;
+﻿using Abc.Facade.Common;
 using System;
 
-namespace Abc.Data.Shop {
-    public sealed class OrderData : UniqueEntityData {
+namespace Abc.Facade.Shop {
+    public class OrderView : UniqueEntityView {
         public string BuyerId { get; set; }
         public DateTime OrderDate { get; set; }
         public string Street { get; set; }
