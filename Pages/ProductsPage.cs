@@ -1,5 +1,5 @@
 ﻿using Abc.Data.Shop;
-using Infra;
+using Abc.Infra;
 
 namespace Pages {
     public class ProductsPage : AbstractPage<ProductsPage, ProductData> {

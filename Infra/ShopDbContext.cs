@@ -1,7 +1,7 @@
 ﻿using Abc.Data.Shop;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra {
+namespace Abc.Infra {
     public class ShopDbContext : DbContext {
         public ShopDbContext(DbContextOptions<ShopDbContext> options)
             : base(options) { }
