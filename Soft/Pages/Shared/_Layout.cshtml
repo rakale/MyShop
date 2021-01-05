@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Abc.Pages.Common.Aids
+@using Abc.Pages.Common.Consts
+@using Abc.Pages.Common.Extensions
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Soft</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,27 +22,21 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Baskets" asp-page="/Index" asp-page-handler="index">Baskets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Brands" asp-page="/Index" asp-page-handler="index">Brands</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Catalogs" asp-page="/Index" asp-page-handler="index">Catalogs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Orders" asp-page="/Index" asp-page-handler="index">Orders</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Products" asp-page="/Index" asp-page-handler="index">Products</a>
-                        </li>
+                        @Html.DropMenu("Shop",
+                            new Link("Baskets", new Uri("/Shop/Baskets/Index?handler=index", UriKind.Relative)),
+                            new Link("Basket items", new Uri("/Shop/BasketItems/Index?handler=index", UriKind.Relative)),
+                            new Link("Brands", new Uri("/Shop/Brands/Index?handler=index", UriKind.Relative)),
+                            new Link("Catalogs", new Uri("/Shop/Catalogs/Index?handler=index", UriKind.Relative)),
+                            new Link("Orders", new Uri("/Shop/Orders/Index?handler=index", UriKind.Relative)),
+                            new Link("Order items", new Uri("/Shop/OrderItems/Index?handler=index", UriKind.Relative)),
+                            new Link("Products", new Uri("/Shop/Products/Index?handler=index", UriKind.Relative))
+                        )
+                        @Html.DropMenu("Client",
+                            new Link("Products", new Uri("/Client/Products/Index?handler=index", UriKind.Relative)),
+                            new Link("Baskets", new Uri("/Client/Baskets/Index?handler=index", UriKind.Relative)),
+                            new Link("Orders", new Uri("/Client/Orders/Index?handler=index", UriKind.Relative))
+                        )
+
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,15 @@
+﻿@using Abc.Pages.Common.Extensions;
+@model Abc.Pages.Shop.OrdersPage;
+
+<body>
+    @Html.Editor(m => m.Item.Id)
+    @Html.Editor(m => m.Item.BuyerId)
+    @Html.Editor(m => m.Item.Street)
+    @Html.Editor(m => m.Item.City)
+    @Html.Editor(m => m.Item.State)
+    @Html.Editor(m => m.Item.ZipCode)
+    @Html.Editor(m => m.Item.Country)
+    @Html.Editor(m => m.Item.OrderDate)
+    @Html.Editor(m => m.Item.From)
+    @Html.Editor(m => m.Item.To)
+</body>

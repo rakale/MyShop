@@ -1,0 +1,14 @@
+﻿@using Abc.Pages.Common.Extensions;
+@model Abc.Pages.Shop.OrderItemsPage;
+
+<body>
+    @Html.Show(m => m.Item.Id)
+    @Html.Show(m => m.Item.CatalogItemId)
+    @Html.Show(m => m.Item.ProductName)
+    @Html.Show(m => m.Item.PictureUri)
+    @Html.Show(m => m.Item.UnitPrice)
+    @Html.Show(m => m.Item.Units)
+    @Html.Show(m => m.Item.OrderId)
+    @Html.Show(m => m.Item.From)
+    @Html.Show(m => m.Item.To)
+</body>

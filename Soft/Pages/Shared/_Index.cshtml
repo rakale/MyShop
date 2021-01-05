@@ -1,12 +1,61 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Abc.Pages.Common.Aids
+@using Abc.Pages.Common.Extensions
+@using Microsoft.AspNetCore.Html
+
 @{
     Layout = "_Layout";
+    ViewData["Title"] = Model.PageTitle;
+    int pageIndex = Model.PageIndex;
+    int totalPages = Model.TotalPages;
+    string fixedFilter = Model.FixedFilter;
+    string fixedValue = Model.FixedValue;
+    string sortOrder = Model.SortOrder;
+    string searchString = Model.SearchString;
+    string currentFilter = Model.CurrentFilter;
+    Uri pageUrl = Model.PageUrl;
+    var a = new Args(pageUrl, null, fixedFilter, fixedValue
+        , sortOrder, searchString, pageIndex, currentFilter);
+  
 }
 
-<h1>@ViewData["Title"]</h1>
-<a asp-page="./Create">Create new item</a>
+<p>
+    <h1>@ViewData["Title"]</h1>
+    <h4>
+     @if (Model.IsMasterDetail()) {
+        <a href='javascript:history.go(-1)'>@Model.PageSubTitle</a>
+     }
+     </h4>
+    @await RenderSectionAsync("Create")
+</p>
+
+<form id="indexForm" asp-page="./Index" method="get">
+    <input type="hidden" name="FixedFilter" value="@Model.FixedFilter" />
+    <input type="hidden" name="FixedValue" value="@Model.FixedValue" />
+    <input type="hidden" name="Handler" value="Index" />
+    <div class="form-inline">
+        <p>
+            Find by:
+            &nbsp;
+            <input id="searchTextBox" class="form-control" type="text" name="SearchString" value="@Model.SearchString" />
+            &nbsp;
+            <input id="searchButton" type="submit" value="Search" class="btn btn-light" />
+            &nbsp;
+            <a id="backToList"asp-page="./Index"
+               asp-route-handler="Index"
+               asp-route-sortorder="@Model.SortOrder"
+               asp-route-fixedFilter="@Model.FixedFilter"
+               asp-route-fixedValue="@Model.FixedValue">Back to Full List</a>
+        </p>
+    </div>
+
+    <div class="form-inline">
+
+        @Html.NavButtons(a, totalPages)
+
+    </div>
+</form>
+
+<p />
 
 @RenderBody()
 
