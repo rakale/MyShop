@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Abc.Pages.Common.ViewsPage&lt;TPage, TRepository, TDomain, TView, TData&gt;">
+    <Position X="0.5" Y="4.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\ViewsPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Pages.Common.ViewPage&lt;TPage, TRepository, TDomain, TView, TData&gt;">
+    <Position X="0.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAQAAAABCAAAAAAAEEkAAAAAA=</HashCode>
+      <FileName>Common\ViewPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Pages.Common.TitledPage&lt;TRepository, TDomain, TView, TData&gt;">
+    <Position X="6.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAABgAAAAAAAAACAgAAAQAAhAAAAIQAAAAEAAA=</HashCode>
+      <FileName>Common\TitledPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Pages.Common.PagedPage&lt;TRepository, TDomain, TView, TData&gt;">
+    <Position X="9.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAABACAAAAAAAEAAUAAAAAAAAAAAAAgAIAAA=</HashCode>
+      <FileName>Common\PagedPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Pages.Common.CrudPage&lt;TRepository, TDomain, TView, TData&gt;">
+    <Position X="9.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAIAAAAAAAAAAAAAiCAEAAAUAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\CrudPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Pages.Common.BasePage&lt;TRepository, TDomain, TView, TData&gt;">
+    <Position X="6.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEABAAIAABQAAAAgAAAgAAAAAAIAAAAAgBABSAAAAA=</HashCode>
+      <FileName>Common\BasePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Mvc.RazorPages.PageModel" Collapsed="true">
+    <Position X="0.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Abc.Pages.Common.UnifiedPage&lt;TPage, TRepository, TDomain, TView, TData&gt;">
+    <Position X="3.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAAABkAAgAAAAgAAAAAACAAAAAAAAAgQRCA=</HashCode>
+      <FileName>Common\UnifiedPage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
