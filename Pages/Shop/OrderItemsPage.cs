@@ -26,23 +26,31 @@ namespace Abc.Pages.Shop {
             createColumn(x => Item.To);
         }
         public override string GetName(IHtmlHelper<OrderItemsPage> html, int i) {
-            if (i == 4)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<OrderItemsPage, decimal>>);
-            if (i == 5)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<OrderItemsPage, int>>);
-            if (i == 7 || i == 8)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<OrderItemsPage, DateTime?>>);
-            return base.GetName(html, i);
+            switch (i) {
+                case 4:
+                    return html.DisplayNameFor(Columns[i] as Expression<Func<OrderItemsPage, decimal>>);
+                case 5:
+                    return html.DisplayNameFor(Columns[i] as Expression<Func<OrderItemsPage, int>>);
+                case 7:
+                case 8:
+                    return html.DisplayNameFor(Columns[i] as Expression<Func<OrderItemsPage, DateTime?>>);
+                default:
+                    return base.GetName(html, i);
+            }
         }
 
         public override IHtmlContent GetValue(IHtmlHelper<OrderItemsPage> html, int i) {
-            if (i == 4)
-                return html.DisplayFor(Columns[i] as Expression<Func<OrderItemsPage, decimal>>);
-            if (i == 5)
-                return html.DisplayFor(Columns[i] as Expression<Func<OrderItemsPage, int>>);
-            if (i == 7 || i == 8)
-                return html.DisplayFor(Columns[i] as Expression<Func<OrderItemsPage, DateTime?>>);
-            return base.GetValue(html, i);
+            switch (i) {
+                case 4:
+                    return html.DisplayFor(Columns[i] as Expression<Func<OrderItemsPage, decimal>>);
+                case 5:
+                    return html.DisplayFor(Columns[i] as Expression<Func<OrderItemsPage, int>>);
+                case 7:
+                case 8:
+                    return html.DisplayFor(Columns[i] as Expression<Func<OrderItemsPage, DateTime?>>);
+                default:
+                    return base.GetValue(html, i);
+            }
         }
     }
 }

@@ -21,15 +21,23 @@ namespace Abc.Pages.Shop {
             createColumn(x => Item.To);
         }
         public override string GetName(IHtmlHelper<BasketsPage> html, int i) {
-            if (i == 2 || i == 3)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<BasketsPage, DateTime?>>);
-            return base.GetName(html, i);
+            switch (i) {
+                case 2:
+                case 3:
+                    return getName<DateTime?>(html, i);
+                default:
+                    return base.GetName(html, i);
+            }
         }
 
         public override IHtmlContent GetValue(IHtmlHelper<BasketsPage> html, int i) {
-            if (i == 2 || i == 3)
-                return html.DisplayFor(Columns[i] as Expression<Func<BasketsPage, DateTime?>>);
-            return base.GetValue(html, i);
+            switch (i) {
+                case 2:
+                case 3:
+                    return getValue<DateTime?>(html, i);
+                default:
+                    return base.GetValue(html, i);
+            }
         }
     }
 }

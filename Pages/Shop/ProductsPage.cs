@@ -6,11 +6,20 @@ using Abc.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace Abc.Pages.Shop {
     public class ProductsPage :ViewPage<ProductsPage, IProductsRepository, Product, ProductView, ProductData> {
-        public ProductsPage(IProductsRepository r) : base(r, "Products") { }
+        public IEnumerable<SelectListItem> Catalogs { get; }
+        public IEnumerable<SelectListItem> Brands { get; }
+        public ProductsPage(IProductsRepository r, ICatalogsRepository c, IBrandsRepository b) 
+            : base(r, "Products") {
+            Catalogs = newItemsList<Catalog, CatalogData>(c);
+            Brands = newItemsList<Brand, BrandData>(b);
+        }
+        public string CatalogName(string id) => itemName(Catalogs, id);
+        public string BrandName(string id) => itemName(Brands, id);
         protected internal override Uri pageUrl() => new Uri("/Shop/Products", UriKind.Relative);
         protected internal override Product toObject(ProductView v) => new ProductViewFactory().Create(v);
         protected internal override ProductView toView(Product o) => new ProductViewFactory().Create(o);
@@ -27,20 +36,18 @@ namespace Abc.Pages.Shop {
             createColumn(x => Item.To);
         }
 
-        public override string GetName(IHtmlHelper<ProductsPage> html, int i) {
-            if (i == 4)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<ProductsPage, decimal>>);
-            if (i == 8 || i == 9)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<ProductsPage, DateTime?>>);
-            return base.GetName(html, i);
-        }
+        public override string GetName(IHtmlHelper<ProductsPage> h, int i) => i switch {
+            4 => getName<decimal>(h, i),
+            8 or 9 => getName<DateTime?>(h, i),
+            _ => base.GetName(h, i)
+        };
 
-        public override IHtmlContent GetValue(IHtmlHelper<ProductsPage> html, int i) {
-            if (i == 4)
-                return html.DisplayFor(Columns[i] as Expression<Func<ProductsPage, decimal>>);
-            if (i == 8 || i == 9)
-                return html.DisplayFor(Columns[i] as Expression<Func<ProductsPage, DateTime?>>);
-            return base.GetValue(html, i);
-        }
+        public override IHtmlContent GetValue(IHtmlHelper<ProductsPage> h, int i) => i switch {
+            4 => getValue<decimal>(h, i),
+            6 => getRaw(h, CatalogName(Item.CatalogTypeId)),
+            7 => getRaw(h, BrandName(Item.CatalogBrandId)),
+            8 or 9 => getValue<DateTime?>(h, i),
+            _ => base.GetValue(h, i)
+        };
     }
 }

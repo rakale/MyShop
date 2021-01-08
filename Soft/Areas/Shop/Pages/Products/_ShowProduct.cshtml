@@ -1,0 +1,15 @@
+﻿@using Abc.Pages.Common.Extensions;
+@model Abc.Pages.Shop.ProductsPage;
+
+<body>
+    @Html.Show(m => m.Item.Id)
+    @Html.Show(m => m.Item.Code)
+    @Html.Show(m => m.Item.Name)
+    @Html.Show(m => m.Item.Description)
+    @Html.Show(m => m.Item.Price)
+    @Html.Show(m => m.Item.PictureUri)
+    @Html.Show(m => m.Item.CatalogTypeId, Model.CatalogName(Model.Item.CatalogTypeId))
+    @Html.Show(m => m.Item.CatalogBrandId, Model.BrandName(Model.Item.CatalogBrandId))
+    @Html.Show(m => m.Item.From)
+    @Html.Show(m => m.Item.To)
+</body>

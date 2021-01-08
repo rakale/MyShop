@@ -21,10 +21,10 @@ namespace Abc.Pages.Common.Extensions {
         public static IHtmlContent Show<TModel, TResult>(
             this IHtmlHelper<TModel> h,
             Expression<Func<TModel, TResult>> e,
-            string value) {
+            object value) {
             if (h == null) throw new ArgumentNullException(nameof(h));
 
-            var s = htmlStrings(h, e, value);
+            var s = htmlStrings(h, e, value.ToString());
 
             return new HtmlContentBuilder(s);
         }

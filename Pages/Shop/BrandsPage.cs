@@ -25,15 +25,23 @@ namespace Abc.Pages.Shop {
         }
 
         public override string GetName(IHtmlHelper<BrandsPage> html, int i) {
-            if (i == 3 || i == 4)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<BrandsPage, DateTime?>>);
-            return base.GetName(html, i);
+            switch (i) {
+                case 3:
+                case 4:
+                    return html.DisplayNameFor(Columns[i] as Expression<Func<BrandsPage, DateTime?>>);
+                default:
+                    return base.GetName(html, i);
+            }
         }
 
         public override IHtmlContent GetValue(IHtmlHelper<BrandsPage> html, int i) {
-            if (i == 3 || i == 4)
-                return html.DisplayFor(Columns[i] as Expression<Func<BrandsPage, DateTime?>>);
-            return base.GetValue(html, i);
+            switch (i) {
+                case 3:
+                case 4:
+                    return html.DisplayFor(Columns[i] as Expression<Func<BrandsPage, DateTime?>>);
+                default:
+                    return base.GetValue(html, i);
+            }
         }
 
     }

@@ -24,23 +24,31 @@ namespace Abc.Pages.Shop {
             createColumn(x => Item.To);
         }
         public override string GetName(IHtmlHelper<BasketItemsPage> html, int i) {
-            if (i == 1)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<BasketItemsPage, decimal>>);
-            if (i == 2)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<BasketItemsPage, int>>);
-            if (i == 5 || i == 6)
-                return html.DisplayNameFor(Columns[i] as Expression<Func<BasketItemsPage, DateTime?>>);
-            return base.GetName(html, i);
+            switch (i) {
+                case 1:
+                    return html.DisplayNameFor(Columns[i] as Expression<Func<BasketItemsPage, decimal>>);
+                case 2:
+                    return html.DisplayNameFor(Columns[i] as Expression<Func<BasketItemsPage, int>>);
+                case 5:
+                case 6:
+                    return html.DisplayNameFor(Columns[i] as Expression<Func<BasketItemsPage, DateTime?>>);
+                default:
+                    return base.GetName(html, i);
+            }
         }
 
         public override IHtmlContent GetValue(IHtmlHelper<BasketItemsPage> html, int i) {
-            if (i == 1)
-                return html.DisplayFor(Columns[i] as Expression<Func<BasketItemsPage, decimal>>);
-            if (i == 2)
-                return html.DisplayFor(Columns[i] as Expression<Func<BasketItemsPage, int>>);
-            if (i == 5 || i == 6)
-                return html.DisplayFor(Columns[i] as Expression<Func<BasketItemsPage, DateTime?>>);
-            return base.GetValue(html, i);
+            switch (i) {
+                case 1:
+                    return html.DisplayFor(Columns[i] as Expression<Func<BasketItemsPage, decimal>>);
+                case 2:
+                    return html.DisplayFor(Columns[i] as Expression<Func<BasketItemsPage, int>>);
+                case 5:
+                case 6:
+                    return html.DisplayFor(Columns[i] as Expression<Func<BasketItemsPage, DateTime?>>);
+                default:
+                    return base.GetValue(html, i);
+            }
         }
     }
 }
