@@ -13,13 +13,12 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form id="editForm" 
+        <form enctype="multipart/form-data" id="createForm"
               asp-page-handler="Edit"
               asp-route-sortorder="@Model.SortOrder"
               asp-route-fixedFilter="@Model.FixedFilter"
               asp-route-fixedValue="@Model.FixedValue"
               asp-route-pageIndex="@Model.PageIndex"
-             
               method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 

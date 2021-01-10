@@ -1,6 +1,7 @@
 ﻿using Abc.Aids.Methods;
 using Abc.Data.Common;
 using Abc.Domain.Common;
+using System.Collections.Generic;
 
 namespace Abc.Facade.Common {
     public abstract class AbstractViewFactory<TData, TObject, TView>
@@ -10,15 +11,18 @@ namespace Abc.Facade.Common {
 
         public TObject Create(TView v) {
             var d = new TData();
-            Copy.Members(v, d);
+            copyMembers(v, d);
             return toObject(d);
         }
 
         internal protected abstract TObject toObject(TData d);
 
+        internal protected virtual void copyMembers(TView v, TData d) =>Copy.Members(v,d);
+        internal protected virtual void copyMembers(TData d, TView v) =>Copy.Members(d,v);
+
         public TView Create(TObject o) {
             var v = new TView();
-            Copy.Members(o.Data, v);
+            copyMembers(o.Data, v); 
             return v;
         }
     }
