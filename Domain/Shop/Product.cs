@@ -10,7 +10,10 @@ namespace Abc.Domain.Shop {
         public byte[] Picture => Data?.Picture ?? new List<byte>().ToArray();
         public string CatalogId => Data?.CatalogId ?? Unspecified;
         public string BrandId => Data?.BrandId ?? Unspecified;
+        public Brand brand => new GetFrom<IBrandsRepository, Brand>().ById(BrandId); 
+        public Catalog catalog => new GetFrom<ICatalogsRepository, Catalog>().ById(CatalogId);
     }
+
 
 
 }

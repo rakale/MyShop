@@ -118,7 +118,7 @@ namespace Abc.Soft.Migrations
                     OrderId = table.Column<string>(nullable: false),
                     From = table.Column<DateTime>(nullable: true),
                     To = table.Column<DateTime>(nullable: true),
-                    Units = table.Column<int>(nullable: false)
+                    Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

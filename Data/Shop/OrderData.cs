@@ -1,9 +1,8 @@
-﻿using Abc.Data.Common;
-using System;
+﻿
 
 namespace Abc.Data.Shop {
-    public sealed class OrderData : DefinedEntityData {
-        public string BuyerId { get; set; }
+    public sealed class OrderData : BuyerProductsData {
+        
         public string Reciever { get; set; }
         public string Street { get; set; }
         public string City { get; set; }

@@ -1,7 +1,7 @@
 ﻿using Abc.Data.Common;
 
 namespace Abc.Data.Shop {
-    public class ProductData : DefinedEntityData {
+    public sealed class ProductData : DefinedEntityData {
         public decimal Price { get; set; }
         public string PictureUri { get; set; }
         public byte[] Picture { get; set; }

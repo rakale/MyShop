@@ -176,11 +176,11 @@ namespace Abc.Soft.Migrations
                     b.Property<DateTime?>("From")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("To")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Units")
-                        .HasColumnType("int");
 
                     b.HasKey("OrderId", "ProductId");
 
