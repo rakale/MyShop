@@ -1,13 +1,12 @@
 ﻿using Abc.Data.Common;
 
 namespace Abc.Data.Shop {
-    public class ProductData : NamedEntityData {
-        public string Description { get; set; }
+    public class ProductData : DefinedEntityData {
         public decimal Price { get; set; }
         public string PictureUri { get; set; }
         public byte[] Picture { get; set; }
-        public string CatalogTypeId { get; set; }
-        public string CatalogBrandId { get; set; }
+        public string CatalogId { get; set; }
+        public string BrandId { get; set; }
     }
 
 }

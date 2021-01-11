@@ -5,7 +5,7 @@ namespace Abc.Domain.Common {
 
     public abstract class ValueObject<TData> : BaseEntity where TData : class, new() {
 
-        protected readonly TData data;
+        private readonly TData data;
         internal static Guid guid;
         protected internal ValueObject(TData d = null) => data = d ?? new TData();
 

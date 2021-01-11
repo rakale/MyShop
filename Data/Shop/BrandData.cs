@@ -1,7 +1,7 @@
 ﻿using Abc.Data.Common;
 
 namespace Abc.Data.Shop {
-    public class BrandData : NamedEntityData {
+    public class BrandData : DefinedEntityData {
     }
 
 }

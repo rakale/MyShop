@@ -20,15 +20,13 @@ namespace Abc.Infra {
         public static void InitializeTables(ModelBuilder b) {
             b.Entity<BasketData>().ToTable(nameof(Baskets));
             b.Entity<BasketItemData>().ToTable(nameof(BasketItems))
-                .Property(x => x.UnitPrice)
-                .HasColumnType("decimal(16,4)");
+                .HasKey(x => new {x.BasketId, x.ProductId });              
             b.Entity<ProductData>().ToTable(nameof(Products))
                 .Property(x => x.Price)
                 .HasColumnType("decimal(16,4)");
             b.Entity<OrderData>().ToTable(nameof(Orders));
             b.Entity<OrderItemData>().ToTable(nameof(OrderItems))
-                .Property(x => x.UnitPrice)
-                .HasColumnType("decimal(16,4)");
+                .HasKey(x=> new {x.OrderId,x.ProductId });
             b.Entity<BrandData>().ToTable(nameof(Brands));
             b.Entity<CatalogData>().ToTable(nameof(Catalogs));
         }

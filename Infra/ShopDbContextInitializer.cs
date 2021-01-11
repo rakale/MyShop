@@ -23,8 +23,8 @@ namespace Abc.Infra {
                         Id = $"P{i}{j}",
                         Code = $"P{i}{j}",
                         Name = $"Product {i}{j}",
-                        CatalogBrandId = $"B{i}",
-                        CatalogTypeId = $"C{j}",
+                        BrandId = $"B{i}",
+                        CatalogId = $"C{j}",
                         Price = GetRandom.UInt8(10, 30),
                         Picture = ConvertToByteArray(files[idx])
                     }, db);

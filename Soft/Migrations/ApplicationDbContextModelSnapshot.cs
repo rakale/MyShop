@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Soft.Data;
 
-namespace Soft.Migrations
+namespace Abc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -27,8 +27,17 @@ namespace Soft.Migrations
                     b.Property<string>("BuyerId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Definition")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("From")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("To")
                         .HasColumnType("datetime2");
@@ -40,14 +49,11 @@ namespace Soft.Migrations
 
             modelBuilder.Entity("Abc.Data.Shop.BasketItemData", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("BasketId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("BasketId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CatalogItemId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("From")
                         .HasColumnType("datetime2");
@@ -58,10 +64,7 @@ namespace Soft.Migrations
                     b.Property<DateTime?>("To")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("decimal(16,4)");
-
-                    b.HasKey("Id");
+                    b.HasKey("BasketId", "ProductId");
 
                     b.ToTable("BasketItems");
                 });
@@ -72,6 +75,9 @@ namespace Soft.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Definition")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("From")
@@ -94,6 +100,9 @@ namespace Soft.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Definition")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("From")
@@ -121,14 +130,23 @@ namespace Soft.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Definition")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("From")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reciever")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
@@ -149,34 +167,22 @@ namespace Soft.Migrations
 
             modelBuilder.Entity("Abc.Data.Shop.OrderItemData", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("OrderId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CatalogItemId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("From")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("OrderId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PictureUri")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("To")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("decimal(16,4)");
 
                     b.Property<int>("Units")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("OrderId", "ProductId");
 
                     b.ToTable("OrderItems");
                 });
@@ -186,16 +192,16 @@ namespace Soft.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CatalogBrandId")
+                    b.Property<string>("BrandId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CatalogTypeId")
+                    b.Property<string>("CatalogId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Definition")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("From")

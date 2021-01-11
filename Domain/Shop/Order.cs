@@ -7,7 +7,7 @@ namespace Abc.Domain.Shop {
         public Order(OrderData d) : base(d) { }
 
         public string BuyerId => Data?.BuyerId ?? Unspecified;
-        public DateTime OrderDate => Data?.OrderDate ?? UnspecifiedValidTo;
+        //TODO public DateTime OrderDate => Data?.OrderDate ?? UnspecifiedValidTo;
         public string Street => Data?.Street ?? Unspecified;
         public string City => Data?.City ?? Unspecified;
         public string State => Data?.State ?? Unspecified;
