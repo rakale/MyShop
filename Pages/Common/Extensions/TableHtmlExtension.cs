@@ -1,10 +1,7 @@
 ﻿using Abc.Pages.Common.Aids;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Abc.Pages.Common.Extensions {
     public static class TableHtmlExtension {

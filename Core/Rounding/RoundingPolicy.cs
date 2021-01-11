@@ -86,8 +86,7 @@ namespace Abc.Core.Rounding {
         public byte RoundingDigit { get; }
 
         public double Round(double amount) {
-            return RoundingStrategy switch
-            {
+            return RoundingStrategy switch {
                 RoundingStrategy.RoundUp => roundUp(amount),
                 RoundingStrategy.RoundDown => roundDown(amount),
                 RoundingStrategy.RoundTowardsNegative => roundTowardsNegative(amount),
@@ -99,8 +98,7 @@ namespace Abc.Core.Rounding {
         }
 
         public decimal Round(decimal amount) {
-            return RoundingStrategy switch
-            {
+            return RoundingStrategy switch {
                 RoundingStrategy.RoundUp => roundUp(amount),
                 RoundingStrategy.RoundDown => roundDown(amount),
                 RoundingStrategy.RoundTowardsNegative => roundTowardsNegative(amount),

@@ -1,7 +1,6 @@
 ﻿using Abc.Data.Shop;
 using Abc.Domain.Shop;
 using Abc.Facade.Shop;
-using Abc.Infra;
 using Abc.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,7 +8,7 @@ using System;
 using System.Linq.Expressions;
 
 namespace Abc.Pages.Shop {
-    public class BrandsPage :ViewPage<BrandsPage, IBrandsRepository, Brand, BrandView, BrandData> {
+    public class BrandsPage : ViewPage<BrandsPage, IBrandsRepository, Brand, BrandView, BrandData> {
         public BrandsPage(IBrandsRepository r) : base(r, "Brands") { }
         protected internal override Uri pageUrl() => new Uri("/Shop/Brands", UriKind.Relative);
 

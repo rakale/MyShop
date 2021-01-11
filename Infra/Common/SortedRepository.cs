@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Abc.Data.Common;
+using Abc.Domain.Common;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Abc.Data.Common;
-using Abc.Domain.Common;
-using Microsoft.EntityFrameworkCore;
 
 namespace Abc.Infra.Common {
 
     public abstract class SortedRepository<TDomain, TData> : BaseRepository<TDomain, TData>, ISorting
-        where TDomain: IEntity<TData>
+        where TDomain : IEntity<TData>
         where TData : PeriodData, new() {
 
         public virtual string SortOrder { get; set; }
@@ -63,8 +63,7 @@ namespace Abc.Infra.Common {
             if (query is null) return null;
             if (e is null) return query;
 
-            try { return isDescending() ? query.OrderByDescending(e) : query.OrderBy(e); }
-            catch { return query; }
+            try { return isDescending() ? query.OrderByDescending(e) : query.OrderBy(e); } catch { return query; }
         }
 
         internal bool isDescending() => !string.IsNullOrEmpty(SortOrder) && SortOrder.EndsWith(DescendingString);

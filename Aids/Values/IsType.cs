@@ -4,30 +4,26 @@ namespace Abc.Aids.Values {
 
     public static class IsType {
 
-        public static bool AnyDouble(object x) => x switch
-        {
+        public static bool AnyDouble(object x) => x switch {
             double _ => true,
             float _ => true,
             _ => AnyDecimal(x)
         };
 
-        public static bool AnyDecimal(object x) => x switch
-        {
+        public static bool AnyDecimal(object x) => x switch {
             decimal _ => true,
             ulong _ => true,
             _ => AnyLong(x)
         };
 
 
-        public static bool AnyLong(object x) => x switch
-        {
+        public static bool AnyLong(object x) => x switch {
             long _ => true,
             uint _ => true,
             _ => AnyInt(x)
         };
 
-        public static bool AnyInt(object x) => x switch
-        {
+        public static bool AnyInt(object x) => x switch {
             short _ => true,
             sbyte _ => true,
             ushort _ => true,

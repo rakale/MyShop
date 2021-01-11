@@ -193,8 +193,7 @@ namespace Abc.Aids.Random {
         public static object AnyDouble(byte minValue = 0, byte maxValue = 100) {
             var i = UInt8();
 
-            return (i % 10) switch
-            {
+            return (i % 10) switch {
                 0 => Int32(minValue, maxValue),
                 1 => UInt32(minValue, maxValue),
                 2 => Float(minValue, maxValue),
@@ -211,8 +210,7 @@ namespace Abc.Aids.Random {
         public static object AnyInt(byte minValue = 0, byte maxValue = 100) {
             var i = UInt8();
 
-            return (i % 5) switch
-            {
+            return (i % 5) switch {
                 0 => Int8(0),
                 1 => UInt8(minValue, maxValue),
                 2 => Int16(minValue, maxValue),
@@ -224,8 +222,7 @@ namespace Abc.Aids.Random {
         public static object AnyValue() {
             var i = Int32();
 
-            return (i % 10) switch
-            {
+            return (i % 10) switch {
                 0 => (object)DateTime(),
                 1 => String(),
                 2 => Char(),

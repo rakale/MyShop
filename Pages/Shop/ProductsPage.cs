@@ -1,19 +1,18 @@
 ﻿using Abc.Data.Shop;
 using Abc.Domain.Shop;
 using Abc.Facade.Shop;
-using Abc.Infra;
 using Abc.Pages.Common;
+using Abc.Pages.Common.Extensions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace Abc.Pages.Shop {
-    public class ProductsPage :ViewPage<ProductsPage, IProductsRepository, Product, ProductView, ProductData> {
+    public class ProductsPage : ViewPage<ProductsPage, IProductsRepository, Product, ProductView, ProductData> {
         public IEnumerable<SelectListItem> Catalogs { get; }
         public IEnumerable<SelectListItem> Brands { get; }
-        public ProductsPage(IProductsRepository r, ICatalogsRepository c, IBrandsRepository b) 
+        public ProductsPage(IProductsRepository r, ICatalogsRepository c, IBrandsRepository b)
             : base(r, "Products") {
             Catalogs = newItemsList<Catalog, CatalogData>(c);
             Brands = newItemsList<Brand, BrandData>(b);
@@ -44,6 +43,7 @@ namespace Abc.Pages.Shop {
 
         public override IHtmlContent GetValue(IHtmlHelper<ProductsPage> h, int i) => i switch {
             4 => getValue<decimal>(h, i),
+            5 => h.DisplayImageFor(Item.PictureUri),
             6 => getRaw(h, CatalogName(Item.CatalogTypeId)),
             7 => getRaw(h, BrandName(Item.CatalogBrandId)),
             8 or 9 => getValue<DateTime?>(h, i),

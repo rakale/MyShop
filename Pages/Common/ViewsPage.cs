@@ -1,8 +1,8 @@
-﻿using System;
-using Abc.Data.Common;
+﻿using Abc.Data.Common;
 using Abc.Domain.Common;
 using Abc.Facade.Common;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 
 namespace Abc.Pages.Common {
     public abstract class ViewsPage<TPage, TRepository, TDomain, TView, TData> :

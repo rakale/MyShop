@@ -1,11 +1,9 @@
 ﻿using Abc.Aids.Random;
 using Abc.Data.Shop;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
 
 namespace Abc.Infra {
-    public class ShopDbContextInitializer: DbInitializer{
+    public class ShopDbContextInitializer : DbInitializer {
 
         private static string[] ids = new string[] { "A", "B", "C", "D", "E" };
 
@@ -16,17 +14,29 @@ namespace Abc.Infra {
         }
 
         private static void addProducts(ShopDbContext db) {
+            var dir = Directory.GetCurrentDirectory() + "\\wwwroot\\images";
+            var files = Directory.GetFiles(dir);
             foreach (var i in ids) {
                 foreach (var j in ids) {
+                    var idx = GetRandom.Int32(0, files.Length);
                     addItem(new ProductData {
-                        Id = $"P{i}{j}", Code = $"P{i}{j}",
+                        Id = $"P{i}{j}",
+                        Code = $"P{i}{j}",
                         Name = $"Product {i}{j}",
                         CatalogBrandId = $"B{i}",
                         CatalogTypeId = $"C{j}",
-                        Price = GetRandom.UInt8(10,30)
-                    }, db);;
+                        Price = GetRandom.UInt8(10, 30),
+                        Picture = ConvertToByteArray(files[idx])
+                    }, db);
                 }
             }
+        }
+
+        private static byte[] ConvertToByteArray(string filePath) {
+            var file = File.OpenRead(filePath);
+            var stream = new MemoryStream();
+            file.CopyTo(stream);
+            return stream.ToArray();
         }
 
         private static void addBrands(ShopDbContext db) {

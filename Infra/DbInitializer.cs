@@ -11,8 +11,7 @@ namespace Abc.Infra {
             try {
                 db?.AddRange(set);
                 db?.SaveChanges();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 Log.Exception(e);
                 rollBack(db);
                 addItems(set, db);
@@ -24,30 +23,23 @@ namespace Abc.Infra {
                 addItem(e, db);
         }
 
-        static internal protected void addItem<T>(T item, DbContext db) where T : PeriodData
-        {
-            try
-            {
+        static internal protected void addItem<T>(T item, DbContext db) where T : PeriodData {
+            try {
                 db?.Add(item);
                 db?.SaveChanges();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Log.Exception(e);
                 rollBack(db);
-                try
-                {
+                try {
                     db?.Update(item);
                     db?.SaveChanges();
-                }
-                catch (Exception e1)
-                {
+                } catch (Exception e1) {
                     Log.Exception(e1);
                     rollBack(db);
                 }
             }
         }
- 
+
         static internal protected void rollBack(DbContext db) {
             var changedEntries = db.ChangeTracker.Entries()
                 .Where(x => x.State != EntityState.Unchanged).ToList();

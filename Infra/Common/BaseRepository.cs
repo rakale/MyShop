@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Abc.Aids.Methods;
+﻿using Abc.Aids.Methods;
 using Abc.Data.Common;
 using Abc.Domain.Common;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Abc.Infra.Common {
 
@@ -52,9 +52,9 @@ namespace Abc.Infra.Common {
 
             if (d is null) return;
 
-            if (isInDatabase(d)) await Update(obj); 
-            else await dbSet.AddAsync(d); 
-            
+            if (isInDatabase(d)) await Update(obj);
+            else await dbSet.AddAsync(d);
+
             await db.SaveChangesAsync();
         }
 
@@ -80,7 +80,7 @@ namespace Abc.Infra.Common {
         }
 
         public object GetById(string id) => Get(id).GetAwaiter().GetResult();
-        
+
         protected internal virtual IQueryable<TData> createSqlQuery() {
             var query = from s in dbSet select s;
 
@@ -92,17 +92,17 @@ namespace Abc.Infra.Common {
         protected abstract Task<TData> getData(string id);
 
         protected TData getData(TDomain obj) => obj?.Data;
-        
+
         protected abstract TData getDataById(TData d);
 
         protected bool isInDatabase(TData d) => getDataById(d) != null;
-        
-        internal async Task<List<TData>> runSqlQueryAsync(IQueryable<TData> query) 
+
+        internal async Task<List<TData>> runSqlQueryAsync(IQueryable<TData> query)
             => await query.AsNoTracking().ToListAsync();
-        
-        internal List<TDomain> toDomainObjectsList(List<TData> set) 
+
+        internal List<TDomain> toDomainObjectsList(List<TData> set)
             => set.Select(toDomainObject).ToList();
-        
+
         private TData copyData(TData d) {
             var x = getDataById(d);
 

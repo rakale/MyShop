@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using Abc.Data.Common;
+﻿using Abc.Data.Common;
 using Abc.Domain.Common;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace Abc.Infra.Common {
 
@@ -25,7 +25,7 @@ namespace Abc.Infra.Common {
             return pages;
         }
 
-        internal int countTotalPages(int count, in int pageSize) => (int) Math.Ceiling(count / (double) pageSize);
+        internal int countTotalPages(int count, in int pageSize) => (int)Math.Ceiling(count / (double)pageSize);
 
         internal int getItemsCount() => base.createSqlQuery().CountAsync().Result;
 

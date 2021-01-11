@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Abc.Pages.Common.Consts {
+﻿namespace Abc.Pages.Common.Consts {
 
     public static class PartyPagesUrls {
 

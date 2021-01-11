@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using Abc.Data.Common;
+﻿using Abc.Data.Common;
 using Abc.Domain.Common;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Abc.Infra.Common {
 

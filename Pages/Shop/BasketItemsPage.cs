@@ -8,7 +8,7 @@ using System;
 using System.Linq.Expressions;
 
 namespace Abc.Pages.Shop {
-    public class BasketItemsPage :ViewPage<BasketItemsPage, 
+    public class BasketItemsPage : ViewPage<BasketItemsPage,
         IBasketItemsRepository, BasketItem, BasketItemView, BasketItemData> {
         public BasketItemsPage(IBasketItemsRepository r) : base(r, "BasketItems") { }
         protected internal override Uri pageUrl() => new Uri("/Shop/BasketItems", UriKind.Relative);

@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Soft.Data;
-using System;
 
 namespace Soft {
     public class Startup {

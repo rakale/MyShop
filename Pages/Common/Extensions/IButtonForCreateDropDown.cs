@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Abc.Pages.Common.Extensions {
     public interface IButtonForCreateDropDown<TPage, TDropDownEnum> {

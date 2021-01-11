@@ -28,8 +28,7 @@ namespace Abc.Aids.Extensions {
         public static bool ToInteger(object o, out int i) {
             i = int.MaxValue;
 
-            return o switch
-            {
+            return o switch {
                 string s => tryParse(s, out i),
                 sbyte i8 => tryConvert(i8, out i),
                 short i16 => tryConvert(i16, out i),

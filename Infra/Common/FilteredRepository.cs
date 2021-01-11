@@ -1,15 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
-using Abc.Data.Common;
+﻿using Abc.Data.Common;
 using Abc.Domain.Common;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Abc.Infra.Common {
 
     public abstract class FilteredRepository<TDomain, TData> : SortedRepository<TDomain, TData>, IFiltering
         where TDomain : IEntity<TData>
-        where TData : PeriodData, new(){
+        where TData : PeriodData, new() {
 
         public string SearchString { get; set; }
         public string CurrentFilter { get; set; }
@@ -28,14 +28,14 @@ namespace Abc.Infra.Common {
 
         private IQueryable<TData> addFixedFiltering(IQueryable<TData> query) {
             var expression = createFixedWhereExpression();
-            return expression is null ? query: query.Where(expression);
+            return expression is null ? query : query.Where(expression);
         }
 
         private Expression<Func<TData, bool>> createFixedWhereExpression() {
             if (FixedFilter is null) return null;
             if (FixedValue is null) return null;
             var param = Expression.Parameter(typeof(TData), "s");
-            
+
             var p = typeof(TData).GetProperty(FixedFilter);
 
             if (p is null) return null;

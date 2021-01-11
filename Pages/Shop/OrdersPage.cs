@@ -1,7 +1,6 @@
 ﻿using Abc.Data.Shop;
 using Abc.Domain.Shop;
 using Abc.Facade.Shop;
-using Abc.Infra;
 using Abc.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,7 +8,7 @@ using System;
 using System.Linq.Expressions;
 
 namespace Abc.Pages.Shop {
-    public class OrdersPage :ViewPage<OrdersPage, IOrdersRepository, Order, OrderView, OrderData> {
+    public class OrdersPage : ViewPage<OrdersPage, IOrdersRepository, Order, OrderView, OrderData> {
         public OrdersPage(IOrdersRepository r) : base(r, "Orders") { }
         protected internal override Uri pageUrl() => new Uri("/Shop/Orders", UriKind.Relative);
         protected internal override Order toObject(OrderView v) => new OrderViewFactory().Create(v);

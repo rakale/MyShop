@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using Abc.Domain.Common;
+﻿using Abc.Domain.Common;
 using Abc.Facade.Common;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Abc.Pages.Common {
 
