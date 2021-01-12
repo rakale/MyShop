@@ -9,6 +9,7 @@ namespace Abc.Infra {
         public DbSet<OrderItemData> OrderItems { get; set; }
         public DbSet<CatalogData> Catalogs { get; set; }
         public DbSet<BrandData> Brands { get; set; }
+        public DbSet<BuyerData> Buyers { get; set; }
         public DbSet<ProductData> Products { get; set; }
         public DbSet<BasketItemData> BasketItems { get; set; }
         public DbSet<BasketData> Baskets { get; set; }
@@ -29,6 +30,7 @@ namespace Abc.Infra {
                 .HasKey(x => new { x.OrderId, x.ProductId });
             b.Entity<BrandData>().ToTable(nameof(Brands));
             b.Entity<CatalogData>().ToTable(nameof(Catalogs));
+            b.Entity<BuyerData>().ToTable(nameof(Buyers));
         }
     }
 }

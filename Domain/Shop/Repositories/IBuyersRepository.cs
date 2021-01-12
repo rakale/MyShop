@@ -2,6 +2,6 @@
 using Abc.Domain.Shop.Model;
 
 namespace Abc.Domain.Shop.Repositories {
-    internal interface IBuyersRepository : IRepository<Buyer> {
+    public interface IBuyersRepository : IRepository<Buyer> {
     }
 }
