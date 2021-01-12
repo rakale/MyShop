@@ -1,4 +1,5 @@
 ﻿using Abc.Domain.Shop;
+using Abc.Domain.Shop.Repositories;
 using Abc.Infra;
 using Abc.Infra.Shop;
 using Microsoft.AspNetCore.Builder;

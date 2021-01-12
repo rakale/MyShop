@@ -22,19 +22,24 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        @Html.DropMenu("Shop",
+                        @Html.DropMenu("Admin",
                             new Link("Baskets", new Uri("/Shop/Baskets/Index?handler=index", UriKind.Relative)),
                             new Link("Basket items", new Uri("/Shop/BasketItems/Index?handler=index", UriKind.Relative)),
                             new Link("Brands", new Uri("/Shop/Brands/Index?handler=index", UriKind.Relative)),
                             new Link("Catalogs", new Uri("/Shop/Catalogs/Index?handler=index", UriKind.Relative)),
                             new Link("Orders", new Uri("/Shop/Orders/Index?handler=index", UriKind.Relative)),
                             new Link("Order items", new Uri("/Shop/OrderItems/Index?handler=index", UriKind.Relative)),
-                            new Link("Products", new Uri("/Shop/Products/Index?handler=index", UriKind.Relative))
+                            new Link("Products", new Uri("/Shop/Products/Index?" +
+                      "handler=index", UriKind.Relative)),
+                            new Link("Buyers", new Uri("/Shop/Buyers/Index?handler=index", UriKind.Relative))
                         )
                         @Html.DropMenu("Client",
+                            new Link("My data", new Uri("/Client/Buyers/Index?handler=index", UriKind.Relative)),
+                            new Link("Brands", new Uri("/Client/Brands/Index?handler=index",UriKind.Relative)),
+                            new Link("Catalogs", new Uri("/Client/Catalogs/Index?handler=index", UriKind.Relative)),
                             new Link("Products", new Uri("/Client/Products/Index?handler=index", UriKind.Relative)),
-                            new Link("Baskets", new Uri("/Client/Baskets/Index?handler=index", UriKind.Relative)),
-                            new Link("Orders", new Uri("/Client/Orders/Index?handler=index", UriKind.Relative))
+                            new Link("My baskets", new Uri("/Client/Baskets/Index?handler=index", UriKind.Relative)),
+                            new Link("My orders", new Uri("/Client/Orders/Index?handler=index", UriKind.Relative))
                         )
 
                     </ul>
