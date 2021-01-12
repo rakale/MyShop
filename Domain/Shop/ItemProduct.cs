@@ -8,5 +8,7 @@ namespace Abc.Domain.Shop {
         
         public string ProductId => Data?.ProductId ?? Unspecified;
         public Product Product => new GetFrom<IProductsRepository, Product>().ById(ProductId);
+        public int Quantity => Data?.Quantity ?? UnspecifiedInteger;
+        public decimal TotalPrice => Product?.Price ?? 0M * Quantity;
     }
 }

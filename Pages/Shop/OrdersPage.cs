@@ -5,7 +5,6 @@ using Abc.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Linq.Expressions;
 
 namespace Abc.Pages.Shop {
     public class OrdersPage : ViewPage<OrdersPage, IOrdersRepository, Order, OrderView, OrderData> {
@@ -21,34 +20,18 @@ namespace Abc.Pages.Shop {
             createColumn(x => Item.State);
             createColumn(x => Item.ZipCode);
             createColumn(x => Item.Country);
-            createColumn(x => Item.OrderDate);
             createColumn(x => Item.From);
             createColumn(x => Item.To);
         }
 
-        public override string GetName(IHtmlHelper<OrdersPage> html, int i) {
-            switch (i) {
-                case 7:
-                    return html.DisplayNameFor(Columns[i] as Expression<Func<OrdersPage, DateTime>>);
-                case 8:
-                case 9:
-                    return html.DisplayNameFor(Columns[i] as Expression<Func<OrdersPage, DateTime?>>);
-                default:
-                    return base.GetName(html, i);
-            }
-        }
-
-        public override IHtmlContent GetValue(IHtmlHelper<OrdersPage> html, int i) {
-            switch (i) {
-                case 7:
-                    return html.DisplayFor(Columns[i] as Expression<Func<OrdersPage, DateTime>>);
-                case 8:
-                case 9:
-                    return html.DisplayFor(Columns[i] as Expression<Func<OrdersPage, DateTime?>>);
-                default:
-                    return base.GetValue(html, i);
-            }
-        }
+        public override string GetName(IHtmlHelper<OrdersPage> h, int i) => i switch {
+            7 or 8 => getName<DateTime?>(h, i),
+            _ => base.GetName(h, i)
+        };
+        public override IHtmlContent GetValue(IHtmlHelper<OrdersPage> h, int i) => i switch {
+            7 or 8 => getValue<DateTime?>(h, i),
+            _ => base.GetValue(h, i)
+        };
 
     }
 

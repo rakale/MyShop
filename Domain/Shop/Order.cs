@@ -1,6 +1,7 @@
 ﻿using Abc.Aids.Reflection;
 using Abc.Data.Shop;
 using Abc.Domain.Common;
+using System;
 using System.Collections.Generic;
 
 namespace Abc.Domain.Shop {
@@ -14,7 +15,21 @@ namespace Abc.Domain.Shop {
         public string ZipCode => Data?.ZipCode ?? Unspecified;
         public IReadOnlyList<OrderItem> Items =>
             new GetFrom<IOrderItemsRepository, OrderItem>().ListBy(orderId, Id);
+
+        public decimal TotalPrice {
+            get {
+                var sum = decimal.Zero;
+                foreach (var i in Items) sum += i.TotalPrice;
+                return sum;
+            }
+        }
+        public string Address => address();
+        private string address() => add(zipCode, Country);
+        private string zipCode() => add(state, ZipCode);
+        private string state() => add(city, State);
+        private string city() => add(street, City);
+        private string street() => (isUnspecified(Street) ? Unspecified : Street).Trim();
+        private static string add(Func<string> head, string tail) =>
+            (isUnspecified(tail) ? head() : $"{head()} {tail}").Trim();
     }
-
-
 }

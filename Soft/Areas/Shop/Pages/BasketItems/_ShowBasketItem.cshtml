@@ -2,10 +2,9 @@
 @model Abc.Pages.Shop.BasketItemsPage;
 
 <body>
-    @Html.Show(m => m.Item.Id)
     @Html.Show(m => m.Item.UnitPrice)
     @Html.Show(m => m.Item.Quantity)
-    @Html.Show(m => m.Item.CatalogItemId)
+    @Html.Show(m => m.Item.ProductId)
     @Html.Show(m => m.Item.BasketId)
     @Html.Show(m => m.Item.From)
     @Html.Show(m => m.Item.To)

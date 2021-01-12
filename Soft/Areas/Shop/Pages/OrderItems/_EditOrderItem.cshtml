@@ -2,12 +2,11 @@
 @model Abc.Pages.Shop.OrderItemsPage;
 
 <body>
-    @Html.Editor(m => m.Item.Id)
-    @Html.Editor(m => m.Item.CatalogItemId)
+    @Html.Editor(m => m.Item.ProductId)
     @Html.Editor(m => m.Item.ProductName)
     @Html.Editor(m => m.Item.PictureUri)
     @Html.Editor(m => m.Item.UnitPrice)
-    @Html.Editor(m => m.Item.Units)
+    @Html.Editor(m => m.Item.Quantity)
     @Html.Editor(m => m.Item.OrderId)
     @Html.Editor(m => m.Item.From)
     @Html.Editor(m => m.Item.To)

@@ -5,7 +5,6 @@ using Abc.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Linq.Expressions;
 
 namespace Abc.Pages.Shop {
     public class OrderItemsPage : ViewPage<OrderItemsPage,
@@ -15,42 +14,27 @@ namespace Abc.Pages.Shop {
         protected internal override OrderItem toObject(OrderItemView v) => new OrderItemViewFactory().Create(v);
         protected internal override OrderItemView toView(OrderItem o) => new OrderItemViewFactory().Create(o);
         protected override void createTableColumns() {
-            createColumn(x => Item.Id);
-            createColumn(x => Item.CatalogItemId);
+            createColumn(x => Item.ProductId);
             createColumn(x => Item.ProductName);
             createColumn(x => Item.PictureUri);
             createColumn(x => Item.UnitPrice);
-            createColumn(x => Item.Units);
+            createColumn(x => Item.Quantity);
             createColumn(x => Item.OrderId);
             createColumn(x => Item.From);
             createColumn(x => Item.To);
         }
-        public override string GetName(IHtmlHelper<OrderItemsPage> html, int i) {
-            switch (i) {
-                case 4:
-                    return html.DisplayNameFor(Columns[i] as Expression<Func<OrderItemsPage, decimal>>);
-                case 5:
-                    return html.DisplayNameFor(Columns[i] as Expression<Func<OrderItemsPage, int>>);
-                case 7:
-                case 8:
-                    return html.DisplayNameFor(Columns[i] as Expression<Func<OrderItemsPage, DateTime?>>);
-                default:
-                    return base.GetName(html, i);
-            }
-        }
+        public override string GetName(IHtmlHelper<OrderItemsPage> h, int i) => i switch {
+            3 => getName<decimal>(h, i),
+            4 => getName<int>(h, i),
+            6 or 7 => getName<DateTime?>(h, i),
+            _ => base.GetName(h, i)
+        };
 
-        public override IHtmlContent GetValue(IHtmlHelper<OrderItemsPage> html, int i) {
-            switch (i) {
-                case 4:
-                    return html.DisplayFor(Columns[i] as Expression<Func<OrderItemsPage, decimal>>);
-                case 5:
-                    return html.DisplayFor(Columns[i] as Expression<Func<OrderItemsPage, int>>);
-                case 7:
-                case 8:
-                    return html.DisplayFor(Columns[i] as Expression<Func<OrderItemsPage, DateTime?>>);
-                default:
-                    return base.GetValue(html, i);
-            }
-        }
+        public override IHtmlContent GetValue(IHtmlHelper<OrderItemsPage> h, int i) => i switch {
+            3 => getValue<decimal>(h, i),
+            4 => getValue<int>(h, i),
+            6 or 7 => getValue<DateTime?>(h, i),
+            _ => base.GetValue(h, i)
+        };
     }
 }

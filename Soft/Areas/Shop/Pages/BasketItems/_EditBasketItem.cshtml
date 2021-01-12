@@ -2,10 +2,9 @@
 @model Abc.Pages.Shop.BasketItemsPage;
 
 <body>
-    @Html.Editor(m => m.Item.Id)
     @Html.Editor(m => m.Item.UnitPrice)
     @Html.Editor(m => m.Item.Quantity)
-    @Html.Editor(m => m.Item.CatalogItemId)
+    @Html.Editor(m => m.Item.ProductId)
     @Html.Editor(m => m.Item.BasketId)
     @Html.Editor(m => m.Item.From)
     @Html.Editor(m => m.Item.To)

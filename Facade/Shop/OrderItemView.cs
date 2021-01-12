@@ -1,13 +1,14 @@
-﻿using Abc.Facade.Common;
+﻿using Abc.Aids.Methods;
+using System.ComponentModel;
 
 namespace Abc.Facade.Shop {
-    public class OrderItemView : UniqueEntityView {
-        public string CatalogItemId { get; set; }
-        public string ProductName { get; set; }
-        public string PictureUri { get; set; }
-        public decimal UnitPrice { get; set; }
-        public int Units { get; set; }
-        public string OrderId { get; set; }
-    }
+    public sealed class OrderItemView : ItemProductView {
+        [DisplayName("Product name")] public string ProductName { get; set; }
+        [DisplayName("Product image")] public string PictureUri { get; set; }
+        [DisplayName("Unit price")] public decimal UnitPrice { get; set; }
+        [DisplayName("Total price")] public decimal TotalPrice { get; set; }
+        [DisplayName("Order")]public string OrderId { get; set; }
 
+        public override string GetId() => Compose.Id(OrderId, base.ProductId);
+    }
 }

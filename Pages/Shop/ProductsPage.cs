@@ -26,11 +26,11 @@ namespace Abc.Pages.Shop {
             createColumn(x => Item.Id);
             createColumn(x => Item.Name);
             createColumn(x => Item.Code);
-            createColumn(x => Item.Description);
+            createColumn(x => Item.Definition);
             createColumn(x => Item.Price);
             createColumn(x => Item.PictureUri);
-            createColumn(x => Item.CatalogTypeId);
-            createColumn(x => Item.CatalogBrandId);
+            createColumn(x => Item.CatalogId);
+            createColumn(x => Item.BrandId);
             createColumn(x => Item.From);
             createColumn(x => Item.To);
         }
@@ -44,8 +44,8 @@ namespace Abc.Pages.Shop {
         public override IHtmlContent GetValue(IHtmlHelper<ProductsPage> h, int i) => i switch {
             4 => getValue<decimal>(h, i),
             5 => h.DisplayImageFor(Item.PictureUri),
-            6 => getRaw(h, CatalogName(Item.CatalogTypeId)),
-            7 => getRaw(h, BrandName(Item.CatalogBrandId)),
+            6 => getRaw(h, CatalogName(Item.CatalogId)),
+            7 => getRaw(h, BrandName(Item.BrandId)),
             8 or 9 => getValue<DateTime?>(h, i),
             _ => base.GetValue(h, i)
         };

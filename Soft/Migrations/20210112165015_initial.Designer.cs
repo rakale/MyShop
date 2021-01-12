@@ -10,7 +10,7 @@ using Soft.Data;
 namespace Abc.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210111225826_initial")]
+    [Migration("20210112165015_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
