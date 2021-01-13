@@ -1,0 +1,12 @@
+﻿@using Abc.Pages.Common.Extensions;
+@model             Abc.Pages.Shop.Client.BuyersClientPage;
+
+<body>
+    <input type="hidden" asp-for="Item.Id" />
+    @Html.Editor(m => m.Item.Name)
+    @Html.Editor(m => m.Item.Street)
+    @Html.Editor(m => m.Item.City)
+    @Html.Editor(m => m.Item.State)
+    @Html.Editor(m => m.Item.Country)
+    @Html.Editor(m => m.Item.ZipCode)
+</body>

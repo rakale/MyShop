@@ -42,6 +42,7 @@ namespace Soft {
             s.AddScoped<IBasketsRepository, BasketsRepository>();
             s.AddScoped<IBasketItemsRepository, BasketItemsRepository>();
             s.AddScoped<IBrandsRepository, BrandsRepository>();
+            s.AddScoped<IBuyersRepository, BuyersRepository>();
             s.AddScoped<ICatalogsRepository, CatalogsRepository>();
             s.AddScoped<IOrdersRepository, OrdersRepository>();
             s.AddScoped<IOrderItemsRepository, OrderItemsRepository>();
