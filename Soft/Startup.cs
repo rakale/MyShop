@@ -1,4 +1,5 @@
-﻿using Abc.Domain.Shop;
+﻿using Abc.Domain.Common;
+using Abc.Domain.Shop;
 using Abc.Domain.Shop.Repositories;
 using Abc.Infra;
 using Abc.Infra.Shop;
@@ -25,17 +26,7 @@ namespace Soft {
             registerDbContexts(services);
             registerAuthentication(services);
             services.AddRazorPages();
-            registerRepositories(services);
-            //const string connection = "DefaultConnection";
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString(connection)));
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-            //services.AddRazorPages();
-
-            //services.AddDbContext<ShopDbContext>(options =>
-            //        options.UseSqlServer(Configuration.GetConnectionString(connection)));
+            registerRepositories(services);           
         }
 
         private static void registerRepositories(IServiceCollection s) {
@@ -47,6 +38,7 @@ namespace Soft {
             s.AddScoped<IOrdersRepository, OrdersRepository>();
             s.AddScoped<IOrderItemsRepository, OrderItemsRepository>();
             s.AddScoped<IProductsRepository, ProductsRepository>();
+            GetRepository.SetServiceProvider(s.BuildServiceProvider());
         }
 
         private void registerAuthentication(IServiceCollection s) {
