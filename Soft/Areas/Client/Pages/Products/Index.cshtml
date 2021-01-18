@@ -1,6 +1,4 @@
 ﻿@page
-@using Abc.Pages.Common.Aids
-@using Abc.Pages.Common.Consts
 @using Abc.Pages.Common.Extensions
 @model Abc.Pages.Shop.Client.ProductsClientPage
 
@@ -9,8 +7,6 @@
     var page = Model.PageUrl;
 }
 
-@section Create {
-    @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
-}
+@section Create {}
 
-@Html.ShowTable(Model)
+@Html.ShowTable(Model, "Osta", null, "Vaata", null)

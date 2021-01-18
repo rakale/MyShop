@@ -2,7 +2,6 @@
 @model Abc.Pages.Shop.Client.ProductsClientPage;
 
 <body>
-    @Html.Show(m => m.Item.Id)
     @Html.Show(m => m.Item.Code)
     @Html.Show(m => m.Item.Name)
     @Html.Show(m => m.Item.Definition)
@@ -10,6 +9,4 @@
     @Html.DisplayImageFor(m => m.Item.PictureUri, 150)
     @Html.Show(m => m.Item.CatalogId, Model.CatalogName(Model.Item.CatalogId))
     @Html.Show(m => m.Item.BrandId, Model.BrandName(Model.Item.BrandId))
-    @Html.Show(m => m.Item.From)
-    @Html.Show(m => m.Item.To)
 </body>

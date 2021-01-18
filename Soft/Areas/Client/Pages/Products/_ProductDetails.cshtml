@@ -1,0 +1,32 @@
+﻿@using Abc.Pages.Common.Aids
+@using Abc.Pages.Common.Extensions
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model.PageTitle;
+    var itemId = Model.ItemId;
+}
+
+<p>
+    <h1>@ViewData["Title"]</h1>
+</p>
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <dl class="row">
+        @RenderBody()
+    </dl>
+</div>
+<div>
+    @Html.BackTo(
+        new Args(
+            null,
+            null,
+            Model.FixedFilter,
+            Model.FixedValue,
+            Model.SortOrder,
+            Model.SearchString,
+            Model.PageIndex))
+
+    @RenderSection("Details")
+</div>

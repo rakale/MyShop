@@ -12,6 +12,17 @@ namespace Abc.Infra.Shop {
         PaginatedRepository<BasketItem, BasketItemData>, IBasketItemsRepository {
         public BasketItemsRepository(ShopDbContext c) : base(c, c.BasketItems) { }
 
+        public async Task<BasketItem> Add(Basket b, Product p) {
+            BasketItemData d = new BasketItemData {
+                BasketId = b.Id,
+                ProductId = p.Id,
+                Quantity = 1
+            };
+            var o = toDomainObject(d);
+            await Add(o);
+            return o;
+        }
+
         protected override async Task<BasketItemData> getData(string id) {
             var basketId = id?.GetHead();
             var productId = id?.GetTail();

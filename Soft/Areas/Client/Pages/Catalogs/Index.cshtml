@@ -2,7 +2,7 @@
 @using Abc.Pages.Common.Aids
 @using Abc.Pages.Common.Consts
 @using Abc.Pages.Common.Extensions
-@model Abc.Pages.Shop.Admin.ProductsPage
+@model Abc.Pages.Shop.Client.CatalogsClientPage
 
 @{
     Layout = "_Index";
@@ -10,7 +10,6 @@
 }
 
 @section Create {
-    @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
 }
 
-@Html.ShowTable(Model, "Buy")
+@Html.ShowTable(Model, null, null, "Tooted", null)
