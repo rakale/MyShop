@@ -2,6 +2,7 @@
 using Abc.Data.Shop;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace Abc.Infra {
     public class ShopDbContextInitializer : DbInitializer {
@@ -18,6 +19,7 @@ namespace Abc.Infra {
         }
 
         private static void addBuyerOrders(ShopDbContext db) {
+            if (db.Orders.Any()) return;
             db.OrderItems.RemoveRange(db.OrderItems);
             db.SaveChanges();
             foreach (var i in ids) {
@@ -56,6 +58,7 @@ namespace Abc.Infra {
         }
 
         private static void addBuyerBaskets(ShopDbContext db) {
+            if (db.Baskets.Any()) return;
             db.BasketItems.RemoveRange(db.BasketItems);
             db.SaveChanges();
             foreach (var i in ids) {
@@ -98,6 +101,7 @@ namespace Abc.Infra {
         private static bool doAddItem() => GetRandom.UInt16(0, 8) == 3;
 
         private static void addBuyers(ShopDbContext db) {
+            if (db.Buyers.Any()) return;
             foreach (var i in ids) {
                 addItem(new BuyerData{
                         Id = buyerId(i),
@@ -118,6 +122,7 @@ namespace Abc.Infra {
         }
 
         private static void addProducts(ShopDbContext db) {
+            if (db.Products.Any()) return;
             var dir = Directory.GetCurrentDirectory() + "\\wwwroot\\images";
             var files = Directory.GetFiles(dir);
             foreach (var i in ids) {
@@ -144,12 +149,14 @@ namespace Abc.Infra {
         }
 
         private static void addBrands(ShopDbContext db) {
+            if (db.Brands.Any()) return;
             foreach (var i in ids) {
                 addItem(new BrandData { Id = $"B{i}", Code = $"B{i}", Name = $"Brand {i}" }, db);
             }
         }
 
         private static void addCatalogs(ShopDbContext db) {
+            if (db.Catalogs.Any()) return;
             foreach (var i in ids) {
                 addItem(new CatalogData { Id = $"C{i}", Code = $"C{i}", Name = $"Catalog {i}" }, db);
             }
