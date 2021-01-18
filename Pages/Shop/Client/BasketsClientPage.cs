@@ -1,11 +1,6 @@
 ﻿using Abc.Aids.Reflection;
 using Abc.Data.Shop;
-using Abc.Domain.Shop;
-using Abc.Domain.Shop.Model;
 using Abc.Domain.Shop.Repositories;
-using Abc.Facade.Shop.Factories;
-using Abc.Facade.Shop.Views;
-using Abc.Pages.Common;
 using Abc.Pages.Shop.Base;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
@@ -18,8 +13,8 @@ namespace Abc.Pages.Shop.Client {
         public BasketsClientPage(IBasketsRepository r) : base(r) { }
         protected internal override Uri pageUrl() => new Uri("/Client/Baskets", UriKind.Relative);
         public override async Task OnGetIndexAsync(string sortOrder,
-               string id, string currentFilter, string searchString, int? pageIndex,
-               string fixedFilter, string fixedValue) {
+           string id, string currentFilter, string searchString, int? pageIndex,
+           string fixedFilter, string fixedValue) {
             SelectedId = id;
             fixedFilter = GetMember.Name<BasketData>(x => x.BuyerId);
             fixedValue = User.Identity.Name;
@@ -38,5 +33,25 @@ namespace Abc.Pages.Shop.Client {
 
             return Redirect(url.ToString());
         }
+        protected override void createTableColumns() {
+            createColumn(x => Item.BuyerName);
+            createColumn(x => Item.BuyerAddress);
+            createColumn(x => Item.TotalPrice);
+            createColumn(x => Item.From);
+            createColumn(x => Item.Closed);
+        }
+        public override string GetName(IHtmlHelper<BasketsClientPage> h, int i) => i switch {
+            2 => getName<decimal>(h, i),
+            3 => getName<DateTime?>(h, i),
+            4 => getName<bool>(h, i),
+            _ => base.GetName(h, i)
+        };
+
+        public override IHtmlContent GetValue(IHtmlHelper<BasketsClientPage> h, int i) => i switch {
+            2 => getValue<decimal>(h, i),
+            3 => getValue<DateTime?>(h, i),
+            4 => getValue<bool>(h, i),
+            _ => base.GetValue(h, i)
+        };
     }
 }

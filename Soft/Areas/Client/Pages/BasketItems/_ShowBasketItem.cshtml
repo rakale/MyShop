@@ -2,10 +2,9 @@
 @model Abc.Pages.Shop.Client.BasketItemsClientPage;
 
 <body>
+    @Html.Show(m => m.Item.ProductId, Model.ProductName(Model.Item.ProductId))
+    @Html.DisplayImageFor(m => m.Item.ProductImage, 150)
     @Html.Show(m => m.Item.UnitPrice)
     @Html.Show(m => m.Item.Quantity)
-    @Html.Show(m => m.Item.ProductId)
-    @Html.Show(m => m.Item.BasketId)
-    @Html.Show(m => m.Item.From)
-    @Html.Show(m => m.Item.To)
+    @Html.Show(m => m.Item.TotalPrice)
 </body>

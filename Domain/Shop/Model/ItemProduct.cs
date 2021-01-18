@@ -10,6 +10,13 @@ namespace Abc.Domain.Shop.Model {
         public string ProductId => Data?.ProductId ?? Unspecified;
         public Product Product => new GetFrom<IProductsRepository, Product>().ById(ProductId);
         public int Quantity => Data?.Quantity ?? UnspecifiedInteger;
-        public decimal TotalPrice => Product?.Price ?? 0M * Quantity;
+        public decimal TotalPrice {
+            get {
+                var p = Product;
+                var up = p?.Price ?? 0M;
+                var tp = up * Quantity;
+                return tp;
+            }
+        }
     }
 }
