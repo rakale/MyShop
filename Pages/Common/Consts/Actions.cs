@@ -6,6 +6,7 @@
         public static string Details => "Details";
         public static string Delete => "Delete";
         public static string Index => "Index";
+        public static string Select => "Select";
 
     }
 

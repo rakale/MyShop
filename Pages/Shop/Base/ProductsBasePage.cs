@@ -24,7 +24,6 @@ namespace Abc.Pages.Shop.Base {
         }
         public string CatalogName(string id) => itemName(Catalogs, id);
         public string BrandName(string id) => itemName(Brands, id);
-        protected internal override Uri pageUrl() => new Uri("/Shop/Products", UriKind.Relative);
         protected internal override Product toObject(ProductView v) => new ProductViewFactory().Create(v);
         protected internal override ProductView toView(Product o) => new ProductViewFactory().Create(o);
         protected override void createTableColumns() {

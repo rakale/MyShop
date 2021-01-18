@@ -14,7 +14,6 @@ namespace Abc.Pages.Shop.Base {
         ViewPage<TPage, IBrandsRepository, Brand, BrandView, BrandData>
         where TPage: PageModel{
         protected BrandsBasePage(IBrandsRepository r) : base(r, "Brands") { }
-        protected internal override Uri pageUrl() => new Uri("/Shop/Brands", UriKind.Relative);
 
         protected internal override Brand toObject(BrandView v) => new BrandViewFactory().Create(v);
 

@@ -25,18 +25,34 @@ namespace Abc.Pages.Common.Extensions {
 
         public static IHtmlContent Row(
             this IHtmlHelper h,
-            bool hasSelect,
+            TableButtons buttons,
             Uri pageUrl,
             string itemId,
+            params IHtmlContent[] values) {
+            if (h == null) throw new ArgumentNullException(nameof(h));
+
+            var a = new Args(pageUrl, itemId);
+
+            return row(buttons, a, values);
+        }
+
+        public static IHtmlContent Row(
+            this IHtmlHelper h,
+            TableButtons buttons,
+            Uri pageUrl,
+            string itemId,
+            string sortOrder,
+            string searchString,
+            int pageIndex,
             string fixedFilter,
             string fixedValue,
             params IHtmlContent[] values) {
 
             if (h == null) throw new ArgumentNullException(nameof(h));
 
-            var a = new Args(pageUrl, itemId, fixedFilter, fixedValue);
+            var a = new Args(pageUrl, itemId, fixedFilter, fixedValue, sortOrder, searchString, pageIndex);
 
-            return row(hasSelect, a, values);
+            return row(buttons, a, values);
         }
 
 
@@ -85,6 +101,12 @@ namespace Abc.Pages.Common.Extensions {
 
             return new HtmlContentBuilder(s);
         }
+        internal static IHtmlContent row(TableButtons buttons, Args a, params IHtmlContent[] values) {
+            var s = htmlStrings(buttons, a, values);
+
+            return new HtmlContentBuilder(s);
+        }
+
         internal static IHtmlContent row(bool hasSelect, bool hasEdit, bool hasDetails, bool hasDelete, Args a, params IHtmlContent[] values) {
             var s = htmlStrings(hasSelect, hasEdit, hasDetails, hasDelete, a, values);
 
@@ -121,6 +143,27 @@ namespace Abc.Pages.Common.Extensions {
             }
 
             return list;
+        }
+
+        internal static List<object> htmlStrings(TableButtons buttons, Args a,
+            params IHtmlContent[] values) {
+            var list = new List<object>();
+            foreach (var value in values) addValue(list, value);
+            list.Add(new HtmlString("<td>"));
+            var hasButton = false;
+            if (buttons.Select != null) addButton(list, a, Actions.Select, buttons.Select, ref hasButton);
+            if (buttons.Edit != null) addButton(list, a, Actions.Edit, buttons.Edit, ref hasButton);
+            if (buttons.Details != null) addButton(list, a, Actions.Details, buttons.Details, ref hasButton);
+            if (buttons.Delete != null) addButton(list, a, Actions.Delete, buttons.Delete, ref hasButton);
+
+            list.Add(new HtmlString("</td>"));
+            return list;
+        }
+
+        private static void addButton(List<Object> list, Args a, string action, string caption, ref bool hasButton) {
+            if (hasButton) list.Add(" | ");
+            list.Add(new HtmlString(Href.Compose(a, action, caption)));
+            hasButton = true;
         }
 
         internal static List<object> htmlStrings(bool hasSelect, Args a, params IHtmlContent[] values) {

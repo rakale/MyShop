@@ -6,18 +6,19 @@ using System.Collections.Generic;
 namespace Abc.Pages.Common.Extensions {
     public static class TableHtmlExtension {
         public static IHtmlContent ShowTable<TPage>(this IHtmlHelper<TPage> h,
-            IIndexTable<TPage> page) {
-            var s = HtmlStrings(h, page);
+            IIndexTable<TPage> page, string select = null, string edit = "Edit",
+            string details = "Details", string delete = "Delete") {
+            var b = new TableButtons(select, edit, details, delete);
+            var s = HtmlStrings(h, page, b);
             return new HtmlContentBuilder(s);
         }
 
         internal static List<object> HtmlStrings<TPage>(this IHtmlHelper<TPage> h,
-            IIndexTable<TPage> page) {
+            IIndexTable<TPage> page, TableButtons buttons) {
             var l = new List<object> {
                 new HtmlString("<body>"),
                 new HtmlString("<table class=\"table\">"),
                 new HtmlString("<thead>"),
-                new HtmlString("<tr>")
             };
             l.Add(h.Header(GetHeaders(h, page)));
             l.Add(new HtmlString("</thead>"));
@@ -26,7 +27,7 @@ namespace Abc.Pages.Common.Extensions {
                 l.Add(new HtmlString("<tr>"));
                 page.SetItem(i);
                 l.Add(h.Row(
-                    false,
+                    buttons,
                     page.PageUrl,
                     page.ItemId,
                     page.SortOrder,
