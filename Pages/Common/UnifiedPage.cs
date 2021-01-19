@@ -44,7 +44,7 @@ namespace Abc.Pages.Common {
             return getValue(h, c);
         }
 
-        private IHtmlContent getValue<TResult>(IHtmlHelper<TPage> h,Expression<Func<TPage,TResult>> f) =>
+        private IHtmlContent getValue<TResult>(IHtmlHelper<TPage> h, Expression<Func<TPage, TResult>> f) =>
            h.DisplayFor(f);
         protected IHtmlContent getRaw<TResult>(IHtmlHelper<TPage> h, TResult r) => h.Raw(r.ToString());
 

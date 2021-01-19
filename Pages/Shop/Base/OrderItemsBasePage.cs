@@ -4,9 +4,7 @@ using Abc.Domain.Shop.Repositories;
 using Abc.Facade.Shop.Factories;
 using Abc.Facade.Shop.Views;
 using Abc.Pages.Common;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 
 namespace Abc.Pages.Shop.Base {

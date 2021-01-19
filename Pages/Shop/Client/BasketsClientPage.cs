@@ -2,9 +2,7 @@
 using Abc.Data.Shop;
 using Abc.Domain.Shop.Repositories;
 using Abc.Pages.Shop.Base;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Threading.Tasks;
 

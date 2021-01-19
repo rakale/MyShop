@@ -1,7 +1,5 @@
 ﻿using Abc.Domain.Shop.Repositories;
 using Abc.Pages.Shop.Base;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 
 namespace Abc.Pages.Shop.Admin {
