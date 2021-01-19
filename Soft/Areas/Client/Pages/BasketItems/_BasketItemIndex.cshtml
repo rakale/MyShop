@@ -1,0 +1,45 @@
+﻿@using Abc.Pages.Common.Aids
+@using Abc.Pages.Common.Extensions
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model.PageTitle;
+    int pageIndex = Model.PageIndex;
+    int totalPages = Model.TotalPages;
+    string fixedFilter = Model.FixedFilter;
+    string fixedValue = Model.FixedValue;
+    string sortOrder = Model.SortOrder;
+    string searchString = Model.SearchString;
+    string currentFilter = Model.CurrentFilter;
+    Uri pageUrl = Model.PageUrl;
+    var a = new Args(pageUrl, null, fixedFilter, fixedValue
+        , sortOrder, searchString, pageIndex, currentFilter);
+  
+}
+
+<p>
+    <h1>@ViewData["Title"]</h1>
+    <h4>
+     @if (Model.IsMasterDetail()) {
+        <a href='javascript:history.go(-1)'>@Model.PageSubTitle</a>
+     }
+     </h4>
+    @await RenderSectionAsync("Create")
+</p>
+
+<form id="indexForm" asp-page="./Index" method="get">
+    <input type="hidden" name="FixedFilter" value="@Model.FixedFilter" />
+    <input type="hidden" name="FixedValue" value="@Model.FixedValue" />
+    <input type="hidden" name="Handler" value="Index" />
+    <div class="form-inline">
+
+        @Html.NavButtons(a, totalPages)
+
+    </div>
+</form>
+
+<p />
+
+@RenderBody()
+
+

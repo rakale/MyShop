@@ -11,7 +11,7 @@ using System;
 
 namespace Abc.Pages.Shop.Base {
     public abstract class OrdersBasePage<TPage>
-        :ViewPage<TPage, IOrdersRepository, Order, OrderView, OrderData>
+        : ViewPage<TPage, IOrdersRepository, Order, OrderView, OrderData>
         where TPage : PageModel {
         public OrdersBasePage(IOrdersRepository r) : base(r, "Orders") { }
         protected internal override Uri pageUrl() => new Uri("/Shop/Orders", UriKind.Relative);

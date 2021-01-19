@@ -1,5 +1,4 @@
 ﻿using Abc.Domain.Common;
-using Abc.Domain.Shop;
 using Abc.Domain.Shop.Repositories;
 using Abc.Infra;
 using Abc.Infra.Shop;
@@ -26,7 +25,7 @@ namespace Soft {
             registerDbContexts(services);
             registerAuthentication(services);
             services.AddRazorPages();
-            registerRepositories(services);           
+            registerRepositories(services);
         }
 
         private static void registerRepositories(IServiceCollection s) {

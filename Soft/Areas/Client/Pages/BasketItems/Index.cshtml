@@ -5,12 +5,16 @@
 @model Abc.Pages.Shop.Client.BasketItemsClientPage;
 
 @{
-    Layout = "_Index";
+    Layout = "_BasketItemIndex";
     var page = Model.PageUrl;
 }
 
 @section Create {
-    @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
+    <h4>
+        @Html.Link(string.Empty, new Link("Ostma", Model.CreateUrl))
+        @Html.Link(string.Empty, new Link("Maksma", Model.OrdersUrl))
+
+    </h4>
 }
 
 @Html.ShowTable(Model)

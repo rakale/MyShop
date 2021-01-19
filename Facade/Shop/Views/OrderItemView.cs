@@ -1,5 +1,4 @@
 ﻿using Abc.Aids.Methods;
-using Abc.Facade.Shop.Views;
 using System.ComponentModel;
 
 namespace Abc.Facade.Shop.Views {

@@ -12,7 +12,7 @@ using System;
 namespace Abc.Pages.Shop.Base {
     public abstract class BrandsBasePage<TPage> :
         ViewPage<TPage, IBrandsRepository, Brand, BrandView, BrandData>
-        where TPage: PageModel{
+        where TPage : PageModel {
         protected BrandsBasePage(IBrandsRepository r) : base(r, "Brands") { }
 
         protected internal override Brand toObject(BrandView v) => new BrandViewFactory().Create(v);

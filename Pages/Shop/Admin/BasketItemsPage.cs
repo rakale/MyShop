@@ -6,7 +6,10 @@ using System;
 
 namespace Abc.Pages.Shop.Admin {
     public class BasketItemsPage : BasketItemsBasePage<BasketItemsPage> {
-        public BasketItemsPage(IBasketItemsRepository r, IBasketsRepository b, IProductsRepository p) : base(r, b, p) { }
+        protected override string ordersPage => "/Shop/Orders";
+
+        public BasketItemsPage(IBasketItemsRepository r, IBasketsRepository b, IProductsRepository p,
+            IOrdersRepository o, IOrderItemsRepository oi) : base(r, b, p, o, oi) { }
         protected internal override Uri pageUrl() => new Uri("/Shop/BasketItems", UriKind.Relative);
         protected override void createTableColumns() {
             createColumn(x => Item.GetId());

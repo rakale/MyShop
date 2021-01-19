@@ -90,7 +90,7 @@ namespace Abc.Infra {
         }
 
         private static void addBasketItem(string basketId, string i, string j, ShopDbContext db) {
-            if(!doAddItem()) return;
+            if (!doAddItem()) return;
             addItem(new BasketItemData {
                 BasketId = basketId,
                 ProductId = $"P{i}{j}",
@@ -103,15 +103,15 @@ namespace Abc.Infra {
         private static void addBuyers(ShopDbContext db) {
             if (db.Buyers.Any()) return;
             foreach (var i in ids) {
-                addItem(new BuyerData{
-                        Id = buyerId(i),
-                        Code = $"GN{i}",
-                        Name = $"Given{i} Name{i}",
-                        City = $"City{i}",
-                        Country = $"Country{i}",
-                        Street = $"Street{i}",
-                        State = $"State{i}",
-                        ZipCode = $"Zip Code{i}"
+                addItem(new BuyerData {
+                    Id = buyerId(i),
+                    Code = $"GN{i}",
+                    Name = $"Given{i} Name{i}",
+                    City = $"City{i}",
+                    Country = $"Country{i}",
+                    Street = $"Street{i}",
+                    State = $"State{i}",
+                    ZipCode = $"Zip Code{i}"
                 }, db);
             }
         }

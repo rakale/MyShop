@@ -1,5 +1,4 @@
 ﻿using Abc.Data.Shop;
-using Abc.Domain.Shop;
 using Abc.Domain.Shop.Model;
 using Abc.Facade.Common;
 using Abc.Facade.Shop.Views;

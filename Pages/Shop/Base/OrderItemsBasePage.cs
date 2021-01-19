@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 
 namespace Abc.Pages.Shop.Base {
-    public abstract class OrderItemsBasePage<TPage> :ViewPage<TPage,
+    public abstract class OrderItemsBasePage<TPage> : ViewPage<TPage,
         IOrderItemsRepository, OrderItem, OrderItemView, OrderItemData>
         where TPage : PageModel {
         protected OrderItemsBasePage(IOrderItemsRepository r) : base(r, "OrderItems") { }

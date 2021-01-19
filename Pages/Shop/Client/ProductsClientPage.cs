@@ -2,7 +2,6 @@
 using Abc.Pages.Common.Extensions;
 using Abc.Pages.Shop.Base;
 using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 

@@ -1,6 +1,5 @@
 ﻿using Abc.Aids.Extensions;
 using Abc.Data.Shop;
-using Abc.Domain.Shop;
 using Abc.Domain.Shop.Model;
 using Abc.Domain.Shop.Repositories;
 using Abc.Infra.Common;
