@@ -24,13 +24,5 @@ namespace Abc.Pages.Shop.Base {
             createColumn(x => Item.From);
             createColumn(x => Item.To);
         }
-        public override string GetName(IHtmlHelper<TPage> h, int i) => i switch {
-            3 or 4 => getName<DateTime?>(h, i),
-            _ => base.GetName(h, i)
-        };
-        public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch {
-            3 or 4 => getValue<DateTime?>(h, i),
-            _ => base.GetValue(h, i)
-        };
     }
 }

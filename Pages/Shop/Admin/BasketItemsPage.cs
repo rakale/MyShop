@@ -23,16 +23,11 @@ namespace Abc.Pages.Shop.Admin {
             createColumn(x => Item.To);
         }
         public override string GetName(IHtmlHelper<BasketItemsPage> h, int i) => i switch {
-            4 or 6 => getName<decimal>(h, i),
-            5 => getName<int>(h, i),
-            7 or 8 => getName<DateTime?>(h, i),
+            0 => "Id",
             _ => base.GetName(h, i)
         };
-
         public override IHtmlContent GetValue(IHtmlHelper<BasketItemsPage> h, int i) => i switch {
-            4 or 6 => getValue<decimal>(h, i),
-            5 => getValue<int>(h, i),
-            7 or 8 => getValue<DateTime?>(h, i),
+            0 => getRaw(h, Item.GetId()),
             _ => base.GetValue(h, i)
         };
     }

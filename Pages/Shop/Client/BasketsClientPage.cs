@@ -40,18 +40,5 @@ namespace Abc.Pages.Shop.Client {
             createColumn(x => Item.From);
             createColumn(x => Item.Closed);
         }
-        public override string GetName(IHtmlHelper<BasketsClientPage> h, int i) => i switch {
-            2 => getName<decimal>(h, i),
-            3 => getName<DateTime?>(h, i),
-            4 => getName<bool>(h, i),
-            _ => base.GetName(h, i)
-        };
-
-        public override IHtmlContent GetValue(IHtmlHelper<BasketsClientPage> h, int i) => i switch {
-            2 => getValue<decimal>(h, i),
-            3 => getValue<DateTime?>(h, i),
-            4 => getValue<bool>(h, i),
-            _ => base.GetValue(h, i)
-        };
     }
 }

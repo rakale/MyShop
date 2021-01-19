@@ -15,13 +15,8 @@ namespace Abc.Pages.Shop.Client {
         }
         protected internal override Uri pageUrl() => new Uri("/Client/Products", UriKind.Relative);
 
-        public override string GetName(IHtmlHelper<ProductsClientPage> h, int i) => i switch {
-            3 => getName<decimal>(h, i),
-            _ => base.GetName(h, i)
-        };
 
         public override IHtmlContent GetValue(IHtmlHelper<ProductsClientPage> h, int i) => i switch {
-            3 => getValue<decimal>(h, i),
             4 => h.DisplayImageFor(Item.PictureUri),
             5 => getRaw(h, CatalogName(Item.CatalogId)),
             6 => getRaw(h, BrandName(Item.BrandId)),

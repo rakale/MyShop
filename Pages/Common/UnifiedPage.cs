@@ -30,23 +30,22 @@ namespace Abc.Pages.Common {
             if (isCorrectIndex(i, Items)) Item = Items[i];
         }
 
-        private bool isCorrectIndex<TList>(int i, IList<TList> l) => i >= 0 && i < l?.Count;
+        private static bool isCorrectIndex<TList>(int i, IList<TList> l) => i >= 0 && i < l?.Count;
 
-        public virtual string GetName(IHtmlHelper<TPage> h, int i) => getName<string>(h, i);
-
-        protected string getName<TResult>(IHtmlHelper<TPage> h, int i) {
-            if (isCorrectIndex(i, Columns))
-                return h.DisplayNameFor(Columns[i] as Expression<Func<TPage, TResult>>);
-            return Undefined;
+        public virtual string GetName(IHtmlHelper<TPage> h, int i) {
+            if (!isCorrectIndex(i, Columns)) return Undefined;
+            dynamic c = Columns[i];
+            return h.DisplayNameFor(c);
         }
 
-        public virtual IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => getValue<string>(h, i);
-
-        protected IHtmlContent getValue<TResult>(IHtmlHelper<TPage> h, int i) {
-            if (isCorrectIndex(i, Columns))
-                return h.DisplayFor(Columns[i] as Expression<Func<TPage, TResult>>);
-            return null;
+        public virtual IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) {
+            if (!isCorrectIndex(i, Columns)) return null;
+            dynamic c = Columns[i];
+            return getValue(h, c);
         }
+
+        private IHtmlContent getValue<TResult>(IHtmlHelper<TPage> h,Expression<Func<TPage,TResult>> f) =>
+           h.DisplayFor(f);
         protected IHtmlContent getRaw<TResult>(IHtmlHelper<TPage> h, TResult r) => h.Raw(r.ToString());
 
         public virtual Uri GetSortStringExpression(int i)

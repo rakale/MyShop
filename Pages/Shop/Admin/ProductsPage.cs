@@ -20,18 +20,10 @@ namespace Abc.Pages.Shop.Admin {
             createColumn(x => Item.From);
             createColumn(x => Item.To);
         }
-        public override string GetName(IHtmlHelper<ProductsPage> h, int i) => i switch {
-            4 => getName<decimal>(h, i),
-            8 or 9 => getName<DateTime?>(h, i),
-            _ => base.GetName(h, i)
-        };
-
         public override IHtmlContent GetValue(IHtmlHelper<ProductsPage> h, int i) => i switch {
-            4 => getValue<decimal>(h, i),
             5 => h.DisplayImageFor(Item.PictureUri),
             6 => getRaw(h, CatalogName(Item.CatalogId)),
             7 => getRaw(h, BrandName(Item.BrandId)),
-            8 or 9 => getValue<DateTime?>(h, i),
             _ => base.GetValue(h, i)
         };
     }
